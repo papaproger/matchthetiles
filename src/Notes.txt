@@ -1,0 +1,1 @@
+<div className={`tile colour-${props.tile.value}`} onClick={clickHandler}></div>

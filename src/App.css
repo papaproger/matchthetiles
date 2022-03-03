@@ -1,0 +1,59 @@
+.App {
+  height: 100vmin;
+  text-align: center;
+  font-size: xx-large;
+  font-weight: bold;
+  background-color: rgb(36,36,36);
+  color: gold;
+
+  display: flex; /* работаем с равнением */
+  flex-direction: row; /* задание направления главной оси - горизонталь */
+  -webkit-flex-direction: row; /* на всякий случай */
+  justify-content: center; /* по главной оси (по горизонтали) */
+  align-items: center; /* перпендикулярно главной оси (по вертикали) */
+}
+
+.tiles-row-wrapper {
+  display: flex;
+  flex-direction: row;
+  -webkit-flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.tile {
+  margin: 15px;
+  border: 1px solid gray;
+  border-radius: 10px;
+  box-shadow: 2px 2px 8px 0 grey;
+}
+
+.tile.opened { color: gray; }
+
+.tile.not-opened-yet:hover { box-shadow: 2px 2px 8px 0 gold; }
+
+.tile td {
+  width: 60px;
+  height: 90px;
+}
+
+/* вращающееся лого */
+
+.logo {
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
