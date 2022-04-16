@@ -1,3 +1,5 @@
+[![Match The Tiles](WhatItLooksLike.jpg "Match The Tiles by PapaProger")](https://papaproger.github.io/matchthetiles/)
+
 # Match The Tiles - make your brain work!
 
 Contents
@@ -10,7 +12,7 @@ Contents
 About
 ---
 
-Match the numbers in pairs. Cast a glance at the screenshot [here](https://github.com/papaproger/matchthetiles/blob/main/WhatItLooksLike.jpg). Play the game [here](https://papaproger.github.io/matchthetiles/).
+Match the numbers in pairs. Play the game [here](https://papaproger.github.io/matchthetiles/).
 
 by
 ---
