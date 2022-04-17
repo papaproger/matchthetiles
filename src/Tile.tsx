@@ -1,3 +1,5 @@
+// Плашка
+
 import logo from './logo.svg'
 import {TileType} from "./App"
 
@@ -14,11 +16,9 @@ const Tile = (props: PropsType) => {
 
     return (
         <div className={`tile ${props.tile.isOpened ? 'opened' : 'not-opened-yet'}`} onClick={clickHandler}>
-            <table>
-                <tr>
-                    <td>{props.tile.isTurnedOver ? props.tile.value : <img src={logo} className="logo" alt="X" />}</td>
-                </tr>
-            </table>
+            <div>
+                {props.tile.isTurnedOver ? props.tile.value : <img src={logo} className="logo" alt="X" />}
+            </div>
         </div>
     )
 }
