@@ -2,11 +2,11 @@
 //                                          //
 //      "Match The Tiles" by PapaProger     //
 //                                          //
-//          version 1.0, 03.03.2022         //
+//          version 1.1, 19.04.2022         //
 //                                          //
 //******************************************//
 
-import React, {useState} from 'react'
+import {useState} from 'react'
 import './App.css'
 // import {v1} from 'uuid' // не используем влоб
 import Tile from './Tile'
@@ -47,7 +47,7 @@ function getMixedArray (array: Array<number>): Array<number> {
 }
 
 // Генерирует массив плашек
-function tilesFabric (rowNumber: number, columnNumber: number): Array<Array<TileType>> {
+function tileFabric (rowNumber: number, columnNumber: number): Array<Array<TileType>> {
 
   // принудительное четное их количество
   if ((rowNumber * columnNumber) % 2 !== 0) columnNumber++
@@ -84,37 +84,33 @@ let papaCounts = 0
 function App() {
 
   // Храним состояние двухмерного массива плашек + задаем размеры игрового поля прямо тут
-  let [tiles, setTiles] = useState(tilesFabric(5, 10))
+  let [tiles, setTiles] = useState(tileFabric(5, 10))
 
   // Обработчик кликов
-  function ClickHandler (ri: number, ci: number): void {
+  function clickHandler (ri: number, ci: number): void {
 
-    // работает, если плашка не вскрыта
-    if (!tiles[ri][ci].isTurnedOver) {
+    let tilesCopy = [...tiles]
 
-      let tilesCopy = [...tiles]
+    currentTiles[papaCounts++] = tiles[ri][ci] /// запоминаю именно ссылку!
 
-      currentTiles[papaCounts++] = tiles[ri][ci] /// запоминаю именно ссылку!
+    if (papaCounts === 3) {
 
-      if (papaCounts === 3) {
-
-        // совпадает ли открытая пара плашек
-        if (currentTiles[0].value !== currentTiles[1].value) {
-          tilesCopy[currentTiles[0].rowIndex][currentTiles[0].columnIndex].isTurnedOver = false
-          tilesCopy[currentTiles[1].rowIndex][currentTiles[1].columnIndex].isTurnedOver = false
-        } else {
-          tilesCopy[currentTiles[0].rowIndex][currentTiles[0].columnIndex].isOpened = true
-          tilesCopy[currentTiles[1].rowIndex][currentTiles[1].columnIndex].isOpened = true
-        }
-        
-        currentTiles[0] = currentTiles[2]
-        papaCounts = 1
+      // совпадает ли открытая пара плашек
+      if (currentTiles[0].value !== currentTiles[1].value) {
+        tilesCopy[currentTiles[0].rowIndex][currentTiles[0].columnIndex].isTurnedOver = false
+        tilesCopy[currentTiles[1].rowIndex][currentTiles[1].columnIndex].isTurnedOver = false
+      } else {
+        tilesCopy[currentTiles[0].rowIndex][currentTiles[0].columnIndex].isOpened = true
+        tilesCopy[currentTiles[1].rowIndex][currentTiles[1].columnIndex].isOpened = true
       }
+        
+      currentTiles[0] = currentTiles[2]
+      papaCounts = 1
+    }
 
     // tilesCopy.map(ta => ta.map(t => { if(t.id === id) t.isTurnedOver = true })) // оставил это тут
     tilesCopy[ri][ci].isTurnedOver = true
     setTiles(tilesCopy)
-    }
   }
 
   // Отрисовка
@@ -123,7 +119,7 @@ function App() {
       <div>
         {tiles.map(ta =>
           (<div className='tiles-row-wrapper'>{ta.map(t =>
-            (<Tile key={t.id} tile={t} clickHandler={ClickHandler}/>))}</div>))}
+            (<Tile key={t.id} tile={t} clickHandler={clickHandler}/>))}</div>))}
       </div>
     </div>
   )
