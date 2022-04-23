@@ -1,6 +1,6 @@
 /********************************************/
 /*   Match The Tiles Styles by PapaProger   */
-/*         version 2.0,  18.04.2022         */
+/*         version 2.1,  23.04.2022         */
 /********************************************/
 
 .App {
@@ -44,6 +44,8 @@
   border: 1px solid gray; /* "a" */
   border-radius: 1vmin; /* 10px */
 
+  cursor: pointer;
+
   display: flex;
   flex-direction: row;
   -webkit-flex-direction: row;
@@ -51,7 +53,7 @@
   align-items: center;
 }
 
-.tile.opened {
+.tile.done {
   color: gray;
 }
 
@@ -85,20 +87,22 @@
   }
 }
 
-/* убираем тени на маленьком экране */
+/* тени и обводка */
 
 @media only screen and (min-height: 400px) {
   .tile {
     box-shadow: 2px 2px 0.8vmin 0 grey; /* 8px */ /* "e" */
   }
 
-  .tile.not-opened-yet:hover {
+  .tile.not-done-yet:hover {
     box-shadow: 2px 2px 0.8vmin 0 gold; /* 8px */
+    transition: box-shadow 200ms linear;
   }
 }
 
 @media only screen and (max-height: 400px) {
-  .tile.not-opened-yet:hover {
-    border-color: gold;
+  .tile.not-done-yet:hover {
+    border-color: rgba(255,215,0,0.8);
+    transition: border-color 200ms linear;
   }
 }

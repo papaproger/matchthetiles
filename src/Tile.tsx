@@ -12,7 +12,7 @@ type PropsType = {
 const Tile = React.memo((props: PropsType) => {
 
     return (
-        <div className={`tile ${props.tile.isOpened ? 'opened' : 'not-opened-yet'}`}
+        <div className={`tile ${props.tile.isDone ? 'done' : 'not-done-yet'}`}
             onClick={() => { if(!props.tile.isTurnedOver) props.clickHandler(props.tile.rowIndex, props.tile.columnIndex) }}>
             <div>
                 {props.tile.isTurnedOver ? props.tile.value : <img src={logo} className="logo" alt="X" />}

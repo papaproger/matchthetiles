@@ -2,7 +2,7 @@
 //                                          //
 //      "Match The Tiles" by PapaProger     //
 //                                          //
-//          version 1.1, 19.04.2022         //
+//          version 1.2, 23.04.2022         //
 //                                          //
 //******************************************//
 
@@ -21,8 +21,8 @@ export type TileType = {
   value: number
   // лицевая ли сторона
   isTurnedOver: boolean
-  // открыта (сыграна) ли в паре
-  isOpened: boolean
+  // сыграна ли в паре
+  isDone: boolean
 }
 
 // Генерирует число в заданном диапазоне
@@ -66,7 +66,7 @@ function tileFabric (rowNumber: number, columnNumber: number): Array<Array<TileT
   for (let i = 0; i < rowNumber; i++) {
     for (let j = 0; j < columnNumber; j++) {
       slaveArray[j] = {id: i.toString() + '-' + j.toString(), rowIndex: i, columnIndex: j,
-      value: fullArray[i*columnNumber + j], isTurnedOver: false, isOpened: false}
+      value: fullArray[i*columnNumber + j], isTurnedOver: false, isDone: false}
     }
     masterArray[i] = [...slaveArray] // (!)
   }
@@ -95,13 +95,13 @@ function App() {
 
     if (papaCounts === 3) {
 
-      // совпадает ли открытая пара плашек
+      // совпадает ли открытая пара плашек // очень плохо //
       if (currentTiles[0].value !== currentTiles[1].value) {
         tilesCopy[currentTiles[0].rowIndex][currentTiles[0].columnIndex].isTurnedOver = false
         tilesCopy[currentTiles[1].rowIndex][currentTiles[1].columnIndex].isTurnedOver = false
       } else {
-        tilesCopy[currentTiles[0].rowIndex][currentTiles[0].columnIndex].isOpened = true
-        tilesCopy[currentTiles[1].rowIndex][currentTiles[1].columnIndex].isOpened = true
+        tilesCopy[currentTiles[0].rowIndex][currentTiles[0].columnIndex].isDone = true
+        tilesCopy[currentTiles[1].rowIndex][currentTiles[1].columnIndex].isDone = true
       }
         
       currentTiles[0] = currentTiles[2]
