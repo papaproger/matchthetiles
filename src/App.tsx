@@ -117,8 +117,8 @@ function App() {
   return (
     <div className="App">
       <div>
-        {tiles.map(ta =>
-          (<div className='tiles-row-wrapper'>{ta.map(t =>
+        {tiles.map((ta, index) =>
+          (<div key={index} className='tiles-row-wrapper'>{ta.map(t =>
             (<Tile key={t.id} tile={t} clickHandler={clickHandler}/>))}</div>))}
       </div>
     </div>

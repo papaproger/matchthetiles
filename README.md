@@ -12,7 +12,7 @@ Contents
 About
 ---
 
-Match the numbers in pairs. Play the game [here](https://papaproger.github.io/matchthetiles/).
+Match the numbers in pairs. [Play it now!](https://papaproger.github.io/matchthetiles/)
 
 by
 ---
